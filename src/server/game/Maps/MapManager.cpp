@@ -1,20 +1,20 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
- * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 2 of the License, or (at your
- * option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+* Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
+* Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
+*
+* This program is free software; you can redistribute it and/or modify it
+* under the terms of the GNU General Public License as published by the
+* Free Software Foundation; either version 2 of the License, or (at your
+* option) any later version.
+*
+* This program is distributed in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+* more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 #include "MapManager.h"
 #include "InstanceSaveMgr.h"
@@ -34,7 +34,7 @@
 #include "WorldPacket.h"
 #include "Group.h"
 
-extern GridState* si_GridStates[];                          // debugging code, should be deleted some day
+extern GridState* si_GridStates[]; // debugging code, should be deleted some day
 
 MapManager::MapManager()
 {
@@ -81,14 +81,14 @@ void MapManager::checkAndCorrectGridStatesArray()
             ok = false;
             si_GridStates[i] = i_GridStates[i];
         }
-        #ifdef TRINITY_DEBUG
+#ifdef TRINITY_DEBUG
         // inner class checking only when compiled with debug
         if (!si_GridStates[i]->checkMagic())
         {
             ok = false;
             si_GridStates[i]->setMagic();
         }
-        #endif
+#endif
     }
     if (!ok)
         ++i_GridStateErrorCount;
@@ -172,7 +172,7 @@ bool MapManager::CanPlayerEnter(uint32 mapid, Player* player, bool loginCheck)
             player->SendTransferAborted(mapid, TRANSFER_ABORT_DIFFICULTY, player->GetDungeonDifficulty());
             return false;
         }
-        else    // attempt to downscale
+        else // attempt to downscale
             mapDiff = GetDownscaledMapDifficultyData(entry->MapID, targetDifficulty);
     }
 
@@ -235,15 +235,15 @@ bool MapManager::CanPlayerEnter(uint32 mapid, Player* player, bool loginCheck)
                 if (!loginCheck && !boundMap->CanEnter(player))
                     return false;
             /*
-                This check has to be moved to InstanceMap::CanEnter()
-                // Player permanently bounded to different instance than groups one
-                InstancePlayerBind* playerBoundedInstance = player->GetBoundInstance(mapid, player->GetDifficulty(entry->IsRaid()));
-                if (playerBoundedInstance && playerBoundedInstance->perm && playerBoundedInstance->save &&
-                    boundedInstance->save->GetInstanceId() != playerBoundedInstance->save->GetInstanceId())
-                {
-                    //TODO: send some kind of error message to the player
-                    return false;
-                }*/
+This check has to be moved to InstanceMap::CanEnter()
+// Player permanently bounded to different instance than groups one
+InstancePlayerBind* playerBoundedInstance = player->GetBoundInstance(mapid, player->GetDifficulty(entry->IsRaid()));
+if (playerBoundedInstance && playerBoundedInstance->perm && playerBoundedInstance->save &&
+boundedInstance->save->GetInstanceId() != playerBoundedInstance->save->GetInstanceId())
+{
+//TODO: send some kind of error message to the player
+return false;
+}*/
     }
 
     // players are only allowed to enter 5 instances per hour

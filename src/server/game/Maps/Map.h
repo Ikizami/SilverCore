@@ -1,20 +1,20 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
- * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 2 of the License, or (at your
- * option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+* Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
+* Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
+*
+* This program is free software; you can redistribute it and/or modify it
+* under the terms of the GNU General Public License as published by the
+* Free Software Foundation; either version 2 of the License, or (at your
+* option) any later version.
+*
+* This program is distributed in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+* more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 #ifndef TRINITY_MAP_H
 #define TRINITY_MAP_H
@@ -56,8 +56,8 @@ struct ScriptAction
 {
     uint64 sourceGUID;
     uint64 targetGUID;
-    uint64 ownerGUID;                                       // owner of source if source is item
-    ScriptInfo const* script;                               // pointer to static script data
+    uint64 ownerGUID; // owner of source if source is item
+    ScriptInfo const* script; // pointer to static script data
 };
 
 // ******************************************
@@ -76,7 +76,7 @@ struct map_fileheader
     uint32 liquidMapSize;
 };
 
-#define MAP_AREA_NO_AREA      0x0001
+#define MAP_AREA_NO_AREA 0x0001
 
 struct map_areaHeader
 {
@@ -85,111 +85,111 @@ struct map_areaHeader
     uint16 gridArea;
 };
 
-#define MAP_HEIGHT_NO_HEIGHT  0x0001
-#define MAP_HEIGHT_AS_INT16   0x0002
-#define MAP_HEIGHT_AS_INT8    0x0004
+#define MAP_HEIGHT_NO_HEIGHT 0x0001
+#define MAP_HEIGHT_AS_INT16 0x0002
+#define MAP_HEIGHT_AS_INT8 0x0004
 
 struct map_heightHeader
 {
     uint32 fourcc;
     uint32 flags;
-    float  gridHeight;
-    float  gridMaxHeight;
+    float gridHeight;
+    float gridMaxHeight;
 };
 
-#define MAP_LIQUID_NO_TYPE    0x0001
-#define MAP_LIQUID_NO_HEIGHT  0x0002
+#define MAP_LIQUID_NO_TYPE 0x0001
+#define MAP_LIQUID_NO_HEIGHT 0x0002
 
 struct map_liquidHeader
 {
     uint32 fourcc;
     uint16 flags;
     uint16 liquidType;
-    uint8  offsetX;
-    uint8  offsetY;
-    uint8  width;
-    uint8  height;
-    float  liquidLevel;
+    uint8 offsetX;
+    uint8 offsetY;
+    uint8 width;
+    uint8 height;
+    float liquidLevel;
 };
 
 enum ZLiquidStatus
 {
-    LIQUID_MAP_NO_WATER     = 0x00000000,
-    LIQUID_MAP_ABOVE_WATER  = 0x00000001,
-    LIQUID_MAP_WATER_WALK   = 0x00000002,
-    LIQUID_MAP_IN_WATER     = 0x00000004,
-    LIQUID_MAP_UNDER_WATER  = 0x00000008
+    LIQUID_MAP_NO_WATER = 0x00000000,
+    LIQUID_MAP_ABOVE_WATER = 0x00000001,
+    LIQUID_MAP_WATER_WALK = 0x00000002,
+    LIQUID_MAP_IN_WATER = 0x00000004,
+    LIQUID_MAP_UNDER_WATER = 0x00000008
 };
 
-#define MAP_LIQUID_TYPE_NO_WATER    0x00
-#define MAP_LIQUID_TYPE_WATER       0x01
-#define MAP_LIQUID_TYPE_OCEAN       0x02
-#define MAP_LIQUID_TYPE_MAGMA       0x04
-#define MAP_LIQUID_TYPE_SLIME       0x08
+#define MAP_LIQUID_TYPE_NO_WATER 0x00
+#define MAP_LIQUID_TYPE_WATER 0x01
+#define MAP_LIQUID_TYPE_OCEAN 0x02
+#define MAP_LIQUID_TYPE_MAGMA 0x04
+#define MAP_LIQUID_TYPE_SLIME 0x08
 
-#define MAP_ALL_LIQUIDS   (MAP_LIQUID_TYPE_WATER | MAP_LIQUID_TYPE_OCEAN | MAP_LIQUID_TYPE_MAGMA | MAP_LIQUID_TYPE_SLIME)
+#define MAP_ALL_LIQUIDS (MAP_LIQUID_TYPE_WATER | MAP_LIQUID_TYPE_OCEAN | MAP_LIQUID_TYPE_MAGMA | MAP_LIQUID_TYPE_SLIME)
 
-#define MAP_LIQUID_TYPE_DARK_WATER  0x10
-#define MAP_LIQUID_TYPE_WMO_WATER   0x20
+#define MAP_LIQUID_TYPE_DARK_WATER 0x10
+#define MAP_LIQUID_TYPE_WMO_WATER 0x20
 
 struct LiquidData
 {
     uint32 type;
-    float  level;
-    float  depth_level;
+    float level;
+    float depth_level;
 };
 
 class GridMap
 {
-    uint32  m_flags;
+    uint32 m_flags;
     // Area data
-    uint16  m_gridArea;
+    uint16 m_gridArea;
     uint16 *m_area_map;
     // Height level data
-    float   m_gridHeight;
-    float   m_gridIntHeightMultiplier;
+    float m_gridHeight;
+    float m_gridIntHeightMultiplier;
     union{
-        float  *m_V9;
+        float *m_V9;
         uint16 *m_uint16_V9;
-        uint8  *m_uint8_V9;
+        uint8 *m_uint8_V9;
     };
     union{
-        float  *m_V8;
+        float *m_V8;
         uint16 *m_uint16_V8;
-        uint8  *m_uint8_V8;
+        uint8 *m_uint8_V8;
     };
     // Liquid data
-    uint16  m_liquidType;
-    uint8   m_liquid_offX;
-    uint8   m_liquid_offY;
-    uint8   m_liquid_width;
-    uint8   m_liquid_height;
-    float   m_liquidLevel;
-    uint8  *m_liquid_type;
-    float  *m_liquid_map;
+    uint16 m_liquidType;
+    uint8 m_liquid_offX;
+    uint8 m_liquid_offY;
+    uint8 m_liquid_width;
+    uint8 m_liquid_height;
+    float m_liquidLevel;
+    uint8 *m_liquid_type;
+    float *m_liquid_map;
 
-    bool  loadAreaData(FILE* in, uint32 offset, uint32 size);
-    bool  loadHeihgtData(FILE* in, uint32 offset, uint32 size);
-    bool  loadLiquidData(FILE* in, uint32 offset, uint32 size);
+    bool loadAreaData(FILE* in, uint32 offset, uint32 size);
+    bool loadHeihgtData(FILE* in, uint32 offset, uint32 size);
+    bool loadLiquidData(FILE* in, uint32 offset, uint32 size);
 
     // Get height functions and pointers
     typedef float (GridMap::*pGetHeightPtr) (float x, float y) const;
     pGetHeightPtr m_gridGetHeight;
-    float  getHeightFromFloat(float x, float y) const;
-    float  getHeightFromUint16(float x, float y) const;
-    float  getHeightFromUint8(float x, float y) const;
-    float  getHeightFromFlat(float x, float y) const;
+    float getHeightFromFloat(float x, float y) const;
+    float getHeightFromUint16(float x, float y) const;
+    float getHeightFromUint8(float x, float y) const;
+    float getHeightFromFlat(float x, float y) const;
 
 public:
     GridMap();
     ~GridMap();
-    bool  loadData(char *filaname);
-    void  unloadData();
+    bool loadData(char *filaname);
+    void unloadData();
 
     uint16 getArea(float x, float y);
     inline float getHeight(float x, float y) {return (this->*m_gridGetHeight)(x, y);}
-    float  getLiquidLevel(float x, float y);
-    uint8  getTerrainType(float x, float y);
+    float getLiquidLevel(float x, float y);
+    uint8 getTerrainType(float x, float y);
     ZLiquidStatus getLiquidStatus(float x, float y, float z, uint8 ReqLiquidType, LiquidData* data = 0);
 };
 
@@ -218,13 +218,13 @@ enum LevelRequirementVsMode
 #pragma pack(pop)
 #endif
 
-#define MAX_HEIGHT            100000.0f                     // can be use for find ground height at surface
-#define INVALID_HEIGHT       -100000.0f                     // for check, must be equal to VMAP_INVALID_HEIGHT, real value for unknown height is VMAP_INVALID_HEIGHT_VALUE
-#define MAX_FALL_DISTANCE     250000.0f                     // "unlimited fall" to find VMap ground if it is available, just larger than MAX_HEIGHT - INVALID_HEIGHT
-#define DEFAULT_HEIGHT_SEARCH     10.0f                     // default search distance to find height at nearby locations
-#define MIN_UNLOAD_DELAY      1                             // immediate unload
+#define MAX_HEIGHT 100000.0f // can be use for find ground height at surface
+#define INVALID_HEIGHT -100000.0f // for check, must be equal to VMAP_INVALID_HEIGHT, real value for unknown height is VMAP_INVALID_HEIGHT_VALUE
+#define MAX_FALL_DISTANCE 250000.0f // "unlimited fall" to find VMap ground if it is available, just larger than MAX_HEIGHT - INVALID_HEIGHT
+#define DEFAULT_HEIGHT_SEARCH 10.0f // default search distance to find height at nearby locations
+#define MIN_UNLOAD_DELAY 1 // immediate unload
 
-typedef std::map<uint32/*leaderDBGUID*/, CreatureGroup*>        CreatureGroupHolderType;
+typedef std::map<uint32/*leaderDBGUID*/, CreatureGroup*> CreatureGroupHolderType;
 
 class Map : public GridRefManager<NGridType>
 {
@@ -355,7 +355,7 @@ class Map : public GridRefManager<NGridType>
         bool IsRaid() const { return i_mapEntry && i_mapEntry->IsRaid(); }
         bool IsRaidOrHeroicDungeon() const { return IsRaid() || i_spawnMode > DUNGEON_DIFFICULTY_NORMAL; }
         bool IsHeroic() const { return IsRaid() ? i_spawnMode >= RAID_DIFFICULTY_10MAN_HEROIC : i_spawnMode >= DUNGEON_DIFFICULTY_HEROIC; }
-        bool Is25ManRaid() const { return IsRaid() && i_spawnMode & RAID_DIFFICULTY_MASK_25MAN; }   // since 25man difficulties are 1 and 3, we can check them like that
+        bool Is25ManRaid() const { return IsRaid() && i_spawnMode & RAID_DIFFICULTY_MASK_25MAN; } // since 25man difficulties are 1 and 3, we can check them like that
         bool IsBattleground() const { return i_mapEntry && i_mapEntry->IsBattleground(); }
         bool IsBattleArena() const { return i_mapEntry && i_mapEntry->IsBattleArena(); }
         bool IsBattlegroundOrArena() const { return i_mapEntry && i_mapEntry->IsBattlegroundOrArena(); }
@@ -419,11 +419,11 @@ class Map : public GridRefManager<NGridType>
         GameObject* GetGameObject(uint64 guid);
         DynamicObject* GetDynamicObject(uint64 guid);
 
-        MapInstanced* ToMapInstanced(){ if (Instanceable())  return reinterpret_cast<MapInstanced*>(this); else return NULL;  }
-        const MapInstanced* ToMapInstanced() const { if (Instanceable())  return (const MapInstanced*)((MapInstanced*)this); else return NULL;  }
+        MapInstanced* ToMapInstanced(){ if (Instanceable()) return reinterpret_cast<MapInstanced*>(this); else return NULL; }
+        const MapInstanced* ToMapInstanced() const { if (Instanceable()) return (const MapInstanced*)((MapInstanced*)this); else return NULL; }
 
-        InstanceMap* ToInstanceMap(){ if (IsDungeon())  return reinterpret_cast<InstanceMap*>(this); else return NULL;  }
-        const InstanceMap* ToInstanceMap() const { if (IsDungeon())  return (const InstanceMap*)((InstanceMap*)this); else return NULL;  }
+        InstanceMap* ToInstanceMap(){ if (IsDungeon()) return reinterpret_cast<InstanceMap*>(this); else return NULL; }
+        const InstanceMap* ToInstanceMap() const { if (IsDungeon()) return (const InstanceMap*)((InstanceMap*)this); else return NULL; }
         float GetWaterOrGroundLevel(float x, float y, float z, float* ground = NULL, bool swim = false) const;
 
     private:
@@ -637,7 +637,7 @@ inline void Map::VisitAll(float const& x, float const& y, float radius, NOTIFIER
 
     TypeContainerVisitor<NOTIFIER, WorldTypeMapContainer> world_object_notifier(notifier);
     cell.Visit(p, world_object_notifier, *this, radius, x, y);
-    TypeContainerVisitor<NOTIFIER, GridTypeMapContainer >  grid_object_notifier(notifier);
+    TypeContainerVisitor<NOTIFIER, GridTypeMapContainer > grid_object_notifier(notifier);
     cell.Visit(p, grid_object_notifier, *this, radius, x, y);
 }
 
@@ -653,7 +653,7 @@ inline void Map::VisitFirstFound(const float &x, const float &y, float radius, N
     cell.Visit(p, world_object_notifier, *this, radius, x, y);
     if (!notifier.i_object)
     {
-        TypeContainerVisitor<NOTIFIER, GridTypeMapContainer >  grid_object_notifier(notifier);
+        TypeContainerVisitor<NOTIFIER, GridTypeMapContainer > grid_object_notifier(notifier);
         cell.Visit(p, grid_object_notifier, *this, radius, x, y);
     }
 }
@@ -676,7 +676,7 @@ inline void Map::VisitGrid(const float &x, const float &y, float radius, NOTIFIE
     Cell cell(p);
     cell.SetNoCreate();
 
-    TypeContainerVisitor<NOTIFIER, GridTypeMapContainer >  grid_object_notifier(notifier);
+    TypeContainerVisitor<NOTIFIER, GridTypeMapContainer > grid_object_notifier(notifier);
     cell.Visit(p, grid_object_notifier, *this, radius, x, y);
 }
 #endif
