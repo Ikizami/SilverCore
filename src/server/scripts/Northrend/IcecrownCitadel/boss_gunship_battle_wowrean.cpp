@@ -1,22 +1,22 @@
 /*
-* Copyright (C) 2008-2012 Trinity <http://www.trinitycore.org/>
-* Copyright (C) 2010-2012 WoWRean <http://www.wowrean.es/>
-* Copyright (C) 2009-2012 Eilo <https://github.com/eilo/>
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-*/
+ * Copyright (C) 2008-2012 Trinity <http://www.trinitycore.org/>
+ * Copyright (C) 2010-2012 WoWRean <http://www.wowrean.es/>
+ * Copyright (C) 2009-2012 Eilo <https://github.com/eilo/>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
 
 #include "icecrown_citadel.h"
 #include "MapManager.h"
@@ -27,20 +27,20 @@
 // Logros, esto veremos despues
 enum eAchievements
 {
-    IM_ON_A_BOAT_10 = 4536,
-    IM_ON_A_BOAT_25 = 4612,
+    IM_ON_A_BOAT_10    = 4536,
+    IM_ON_A_BOAT_25    = 4612,
 };
 
 // Eventos o fases de la script
 enum Actions
 {
-    ACTION_INTRO_START = 1,
-    ACTION_BATTLE_EVENT = 2,
-    ACTION_MAGE_DIE = 3,
-    ACTION_ROCK_DIE = 4,
-    ACTION_AXES_RIFL_DIE = 5,
-    ACTION_DONE = 6,
-    ACTION_FAIL = 7,
+    ACTION_INTRO_START             = 1,
+    ACTION_BATTLE_EVENT            = 2,
+    ACTION_MAGE_DIE                = 3,
+    ACTION_ROCK_DIE                = 4,
+    ACTION_AXES_RIFL_DIE           = 5,
+    ACTION_DONE                    = 6,
+    ACTION_FAIL                    = 7,
 };
 
 // Vamos a ver, spells pero no todas estan bien, (PARA LUEGO)
@@ -50,100 +50,100 @@ enum Spells
         // AQUI VA LAS SPELLS DEL TRASH //
 
     // Kor'kron Primalist
-    SPELL_WRATH = 69968,
-    SPELL_HEALING_TOUCH = 69899,
-    SPELL_REGROWTH = 69882,
-    SPELL_REJUVENATION = 69898,
+    SPELL_WRATH                       = 69968,
+    SPELL_HEALING_TOUCH               = 69899,
+    SPELL_REGROWTH                    = 69882,
+    SPELL_REJUVENATION                = 69898,
 
-    SPELL_SUMMON_BATTLE_STANDART_A = 69810,
-    SPELL_SUMMON_BATTLE_STANDART_H = 69811,
+    SPELL_SUMMON_BATTLE_STANDART_A    = 69810,
+    SPELL_SUMMON_BATTLE_STANDART_H    = 69811,
 
     // Kor'kron Defender
-    SPELL_DEVASTATE = 69902,
-    SPELL_THUNDERCLAP = 69965,
-    SPELL_SUNDER_ARMOR = 57807,
-    SPELL_SPELL_REFLECT = 69901,
+    SPELL_DEVASTATE                   = 69902,
+    SPELL_THUNDERCLAP                 = 69965,
+    SPELL_SUNDER_ARMOR                = 57807,
+    SPELL_SPELL_REFLECT               = 69901,
 
     // Skybreaker Vindicator
-    SPELL_AVENGERS_SHIELD = 69927,
-    SPELL_CONCENTRATION = 69930,
-    SPELL_HOLY_WRATH = 69934,
+    SPELL_AVENGERS_SHIELD             = 69927,
+    SPELL_CONCENTRATION               = 69930,
+    SPELL_HOLY_WRATH                  = 69934,
 
     // Frostwyrm
-    SPELL_FROST_BREATH = 70116,
-    SPELL_BLIZZARD = 70362,
-    SPELL_FROST_CLEAVE = 70361,
+    SPELL_FROST_BREATH                = 70116,
+    SPELL_BLIZZARD                    = 70362,
+    SPELL_FROST_CLEAVE                = 70361,
 
 /* ------------ Spells de la pelea ------------- */
-    SPELL_BURNING_PITCH_A = 71335,
-    SPELL_BURNING_PITCH_H = 71339,
-    SPELL_BURNING_PITCH_SIEGE_DMG_A = 70383,
-    SPELL_BURNING_PITCH_SIEGE_DMG_H = 70374,
-    SPELL_BURNING_PITCH_AOE_DAMAGE = 69660,
+    SPELL_BURNING_PITCH_A             = 71335,
+    SPELL_BURNING_PITCH_H             = 71339,
+    SPELL_BURNING_PITCH_SIEGE_DMG_A   = 70383,
+    SPELL_BURNING_PITCH_SIEGE_DMG_H   = 70374,
+    SPELL_BURNING_PITCH_AOE_DAMAGE    = 69660,
 
-    SPELL_WOUNDING_STRIKE_10_NM = 69651,
-    SPELL_WOUNDING_STRIKE_10_HM = 72570,
-    SPELL_WOUNDING_STRIKE_25_NM = 72569,
-    SPELL_WOUNDING_STRIKE_25_HM = 72571,
+    SPELL_WOUNDING_STRIKE_10_NM       = 69651,
+    SPELL_WOUNDING_STRIKE_10_HM       = 72570,
+    SPELL_WOUNDING_STRIKE_25_NM       = 72569,
+    SPELL_WOUNDING_STRIKE_25_HM       = 72571,
 
-    SPELL_TELEPORT_VISUAL = 64446,
-    SPELL_BLADESTORM = 69652,
-    SPELL_BLADESTORM_TRIGGER = 69653,
+    SPELL_TELEPORT_VISUAL             = 64446,
+    SPELL_BLADESTORM                  = 69652,
+    SPELL_BLADESTORM_TRIGGER          = 69653,
 
     // Cannon
-    SPELL_HEAT_DRAIN = 69470,
-    SPELL_OVERHEAT = 69487, // Triggers spell #69488 every 0.25s. It should consume 10 Energy but does not.
-    SPELL_CANNON_BLAST = 69399,
-    SPELL_INCINERATING_BLAST = 69401,
+    SPELL_HEAT_DRAIN                  = 69470,
+    SPELL_OVERHEAT                    = 69487, // Triggers spell #69488 every 0.25s. It should consume 10 Energy but does not.
+    SPELL_CANNON_BLAST                = 69399,
+    SPELL_INCINERATING_BLAST          = 69401,
 
     // Auras
-    SPELL_ON_ORGRIMS_HAMMERS_DECK = 70121,
-    SPELL_ON_SKYBREAKERS_DECK = 70120,
+    SPELL_ON_ORGRIMS_HAMMERS_DECK     = 70121,
+    SPELL_ON_SKYBREAKERS_DECK         = 70120,
 
 /* ------------- Algunas spells de Adds -------------- */
     // Kor'kron Battle-mage & Skybreaker Sorcerer
-    SPELL_BELOW_ZERO = 69705,
-    SPELL_SHADOW_CHANNELING = 45104,
+    SPELL_BELOW_ZERO                  = 69705,
+    SPELL_SHADOW_CHANNELING           = 45104,
 
     // Experience spells
-    SPELL_EXPERIENCED = 71188,
-    SPELL_VETERAN = 71193,
-    SPELL_ELITE = 71195,
-    SPELL_DESPERATE_RESOLVE_10_NM = 69647,
-    SPELL_DESPERATE_RESOLVE_10_HM = 72537,
-    SPELL_DESPERATE_RESOLVE_25_NM = 72536,
-    SPELL_DESPERATE_RESOLVE_25_HM = 72538,
+    SPELL_EXPERIENCED                 = 71188,
+    SPELL_VETERAN                     = 71193,
+    SPELL_ELITE                       = 71195,
+    SPELL_DESPERATE_RESOLVE_10_NM     = 69647,
+    SPELL_DESPERATE_RESOLVE_10_HM     = 72537,
+    SPELL_DESPERATE_RESOLVE_25_NM     = 72536,
+    SPELL_DESPERATE_RESOLVE_25_HM     = 72538,
 
     // Kor'kron Axethrower & Skybreaker Rifleman
-    SPELL_HURL_AXE = 70161,
-    SPELL_SHOOT = 70162,
+    SPELL_HURL_AXE                    = 70161,
+    SPELL_SHOOT                       = 70162,
 
     // Kor'kron Rocketeer & Skybreaker Mortar Soldier
-    SPELL_ROCKET_ARTILLERY_MARKER = 71371,
-    SPELL_ROCKET_ARTILLERY_TRIGGERED = 69679,
-    SPELL_ROCKET_ARTILLERY_HORDE = 69678,
-    SPELL_ROCKET_ARTILLERY_ALLIANCE = 70609,
-    SPELL_EXPLOSION = 69680,
+    SPELL_ROCKET_ARTILLERY_MARKER     = 71371,
+    SPELL_ROCKET_ARTILLERY_TRIGGERED  = 69679,
+    SPELL_ROCKET_ARTILLERY_HORDE      = 69678,
+    SPELL_ROCKET_ARTILLERY_ALLIANCE   = 70609,
+    SPELL_EXPLOSION                   = 69680,
 
 /* ------------- Spell bosses ------------ */
     // Muradin Bronzebeard / High Overlord Saurfang
-    SPELL_CLEAVE = 15284,
-    SPELL_RENDING_THROW = 70309,
-    SPELL_TASTE_OF_BLOOD = 69634,
+    SPELL_CLEAVE                      = 15284,
+    SPELL_RENDING_THROW               = 70309,
+    SPELL_TASTE_OF_BLOOD              = 69634,
 
 /* -------------- Spells Efectos ------------- */
     // Ship Explsion
-    SPELL_SHIP_EXPLOSION = 72137,
+    SPELL_SHIP_EXPLOSION              = 72137,
 
     // Remove Rocket Packs
-    SPELL_REMOVE_ROCKET_PACK = 70713,
+    SPELL_REMOVE_ROCKET_PACK          = 70713,
 
 /* ---------------- Logros ----------------- */
     // Achievement spell required target
-    SPELL_ACHIEVEMENT = 72959,
+    SPELL_ACHIEVEMENT                 = 72959,
 
     // Achievements
-    SPELL_ACHIEVEMENT_CHECK = 72959,
+    SPELL_ACHIEVEMENT_CHECK           = 72959,
 };
 
 // AQUI PONERLE OJO A COMO QUEREMOS QUE QUEDE
@@ -248,22 +248,22 @@ enum Events
 enum Texts
 {
     // Kor'kron Primalist
-    SAY_FIRST_SQUAD_RESCUED_HORDE_0 = 0,
+    SAY_FIRST_SQUAD_RESCUED_HORDE_0  = 0,
 
     // Kor'kron Invoker
-    SAY_FIRST_SQUAD_RESCUED_HORDE_1 = 0,
+    SAY_FIRST_SQUAD_RESCUED_HORDE_1  = 0,
 
     // Kor'kron Defender
     SAY_SECOND_SQUAD_RESCUED_HORDE_0 = 0,
     SAY_SECOND_SQUAD_RESCUED_HORDE_1 = 1,
-    SAY_FROSTWYRM_SUMMON_0 = 2,
-    SAY_FROSTWYRM_SUMMON_1 = 3,
+    SAY_FROSTWYRM_SUMMON_0           = 2,
+    SAY_FROSTWYRM_SUMMON_1           = 3,
 
     // Skybreaker Vindicator
-    SAY_FIRST_SQUAD_RESCUED_ALLIANCE_0 = 0,
+    SAY_FIRST_SQUAD_RESCUED_ALLIANCE_0  = 0,
 
     // Skybreaker Sorcerer
-    SAY_FIRST_SQUAD_RESCUED_ALLIANCE_1 = 0,
+    SAY_FIRST_SQUAD_RESCUED_ALLIANCE_1  = 0,
 
     // Skybreaker Protector
     SAY_SECOND_SQUAD_RESCUED_ALLIANCE_0 = 0,
@@ -271,53 +271,53 @@ enum Texts
     SAY_SECOND_SQUAD_RESCUED_ALLIANCE_2 = 2,
 
     // Kor'kron Invoker & Skybreaker Sorcerer
-    SAY_SUMMON_BATTLE_STANDARD = 1,
+    SAY_SUMMON_BATTLE_STANDARD          = 1,
 
     // Froswyrm
-    SAY_FROSTWYRM_LAND_H_0 = 0,
-    SAY_FROSTWYRM_LAND_A_1 = 1,
+    SAY_FROSTWYRM_LAND_H_0           = 0,
+    SAY_FROSTWYRM_LAND_A_1           = 1,
 
     // Muradin Bronzebeard
-    SAY_INTRO_ALLIANCE_0 = 0,
-    SAY_INTRO_ALLIANCE_1 = 1,
-    SAY_INTRO_ALLIANCE_2 = 2,
-    SAY_INTRO_ALLIANCE_3 = 3,
-    SAY_INTRO_ALLIANCE_4 = 4,
-    SAY_INTRO_ALLIANCE_5 = 5,
-    SAY_INTRO_ALLIANCE_7 = 6,
-    SAY_INTRO_HORDE_3 = 7,
-    SAY_BOARDING_SKYBREAKER_1 = 8,
-    SAY_BOARDING_ORGRIMS_HAMMER_0 = 9,
-    SAY_NEW_RIFLEMEN_SPAWNED = 10,
-    SAY_NEW_MORTAR_TEAM_SPAWNED = 11,
-    SAY_NEW_MAGE_SPAWNED = 12,
-    SAY_ALLIANCE_VICTORY = 13,
-    SAY_ALLIANCE_DEFEAT = 14, // How will we handle that case ? Ie. the player loses
+    SAY_INTRO_ALLIANCE_0             = 0,
+    SAY_INTRO_ALLIANCE_1             = 1,
+    SAY_INTRO_ALLIANCE_2             = 2,
+    SAY_INTRO_ALLIANCE_3             = 3,
+    SAY_INTRO_ALLIANCE_4             = 4,
+    SAY_INTRO_ALLIANCE_5             = 5,
+    SAY_INTRO_ALLIANCE_7             = 6,
+    SAY_INTRO_HORDE_3                = 7,
+    SAY_BOARDING_SKYBREAKER_1        = 8,
+    SAY_BOARDING_ORGRIMS_HAMMER_0    = 9,
+    SAY_NEW_RIFLEMEN_SPAWNED         = 10,
+    SAY_NEW_MORTAR_TEAM_SPAWNED      = 11,
+    SAY_NEW_MAGE_SPAWNED             = 12,
+    SAY_ALLIANCE_VICTORY             = 13,
+    SAY_ALLIANCE_DEFEAT              = 14, // How will we handle that case ? Ie. the player loses
 
     // High Overlord Saurfang
-    SAY_INTRO_HORDE_0 = 0,
-    SAY_INTRO_HORDE_0_1 = 1,
-    SAY_INTRO_HORDE_1 = 2,
-    SAY_INTRO_HORDE_2 = 3,
-    SAY_INTRO_HORDE_4 = 4,
-    SAY_BOARDING_SKYBREAKER_0 = 5,
-    SAY_BOARDING_ORGRIMS_HAMMER_1 = 6,
-    SAY_NEW_AXETHROWER_SPAWNED = 7,
-    SAY_NEW_ROCKETEERS_SPAWNED = 8,
-    SAY_NEW_BATTLE_MAGE_SPAWNED = 9,
-    SAY_HORDE_VICTORY = 10,
-    SAY_HORDE_DEFEAT = 11, // How will we handle that case ? Ie. the player loses
+    SAY_INTRO_HORDE_0                = 0,
+    SAY_INTRO_HORDE_0_1              = 1,
+    SAY_INTRO_HORDE_1                = 2,
+    SAY_INTRO_HORDE_2                = 3,
+    SAY_INTRO_HORDE_4                = 4,
+    SAY_BOARDING_SKYBREAKER_0        = 5,
+    SAY_BOARDING_ORGRIMS_HAMMER_1    = 6,
+    SAY_NEW_AXETHROWER_SPAWNED       = 7,
+    SAY_NEW_ROCKETEERS_SPAWNED       = 8,
+    SAY_NEW_BATTLE_MAGE_SPAWNED      = 9,
+    SAY_HORDE_VICTORY                = 10,
+    SAY_HORDE_DEFEAT                 = 11, // How will we handle that case ? Ie. the player loses
 
     SAY_HIGH_OVERLORD_SAURFANG_NOT_VISUAL = 0,
-    SAY_BOARDING_SKYBREAKER_SAURFANG = 1,
-    SAY_MURADIN_BRONZEBEARD_NOT_VISUAL = 0,
-    SAY_BOARDING_SKYBREAKER_MURADIN = 1,
+    SAY_BOARDING_SKYBREAKER_SAURFANG      = 1,
+    SAY_MURADIN_BRONZEBEARD_NOT_VISUAL    = 0,
+    SAY_BOARDING_SKYBREAKER_MURADIN       = 1,
 };
 
 // ****OJO****
 // Hay que ver si en primer lugar estan volando estos 2
-Position const FrostWyrmPosH = {-435.429f, 2077.556f, 219.1148f, 4.767166f};
-Position const FrostWyrmPosA = {-437.409f, 2349.026f, 219.1148f, 1.483120f};
+Position const FrostWyrmPosH   = {-435.429f, 2077.556f, 219.1148f, 4.767166f};
+Position const FrostWyrmPosA   = {-437.409f, 2349.026f, 219.1148f, 1.483120f};
 
 struct mortarMarksLoc
 {
@@ -333,9 +333,9 @@ struct mortarMarksLoc
 // ahora ya sabemos de que van, y lo primero es verificar el AI de los npcs, si no
 // se comportan como deben, entonces habra que retocar estas 3 funciones para localizar
 // sus respectivos targets y demas.
-// |
-// |
-// V
+//                 |
+//                 |
+//                 V
 typedef std::list<Player*> TPlayerLists;
 
 TPlayerLists GetPlayersInTheMaps(Map *pMap)
@@ -455,7 +455,7 @@ Transport* CheckUnfriendlyShip(Creature* me, InstanceScript* instance, uint32 da
         return NULL;
 }
 
-//Teleport players <----------------- Esto es para cuando se reinicia el evento, al mapa de icc
+//Teleport players  <----------------- Esto es para cuando se reinicia el evento, al mapa de icc
 void TeleportPlayers(Map* map, uint64 TeamInInstance)
 {
     if(map)
@@ -574,7 +574,7 @@ void RestartEvent(Transport* t1, Transport* t2, Map* instance, uint64 TeamInInst
                             th->AddNPCPassengerInInstance(NPC_GB_KORKRON_AXETHROWER, 24.70331f, 25.36584f, 35.97845f, 1.66527f);
                             th->AddNPCPassengerInInstance(NPC_GB_KORKRON_ROCKETEER, -11.44849f, -25.71838f, 33.64343f, 1.49248f);
                             th->AddNPCPassengerInInstance(NPC_GB_KORKRON_ROCKETEER, 12.30336f, -25.69653f, 35.32373f, 1.49248f);
-                        }
+                        }                        
                         else
                         {
                             th->AddNPCPassengerInInstance(NPC_GB_KORKRON_AXETHROWER, -3.170555f, 28.30652f, 34.21082f, 1.66527f);
@@ -617,7 +617,7 @@ void RestartEvent(Transport* t1, Transport* t2, Map* instance, uint64 TeamInInst
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 19.72286f, -2.193787f, 33.06982f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 19.72286f, -2.193787f, 33.06982f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 8.599396f, -28.55855f, 24.79919f, 1.6f);
-                        t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 38.94339f, -33.808f, 25.39618f, 1.6f);
+                        t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 38.94339f, -33.808f,  25.39618f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 58.15474f, 0.748094f, 41.87663f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 5.607554f, -6.350654f, 34.00357f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 4.780305f, -29.05227f, 35.09634f, 1.6f);
@@ -662,7 +662,7 @@ void RestartEvent(Transport* t1, Transport* t2, Map* instance, uint64 TeamInInst
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 19.72286f, -2.193787f, 33.06982f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 19.72286f, -2.193787f, 33.06982f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 8.599396f, -28.55855f, 24.79919f, 1.6f);
-                        t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 38.94339f, -33.808f, 25.39618f, 1.6f);
+                        t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 38.94339f, -33.808f,  25.39618f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 58.15474f, 0.748094f, 41.87663f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 5.607554f, -6.350654f, 34.00357f, 1.6f);
                         t->AddNPCPassengerInInstance(NPC_GB_GUNSHIP_HULL, 4.780305f, -29.05227f, 35.09634f, 1.6f);
@@ -766,7 +766,7 @@ void StopFight(Transport* t1, Transport* t2)
 }
 
 /* --------------------------------------------------------------------------------------------------------------------- */
-/* ------------------ DESDE AQUI LOS BOSSES/NPCS aqui esta lo guapo :) ---------------- */
+/* ------------------                   DESDE AQUI LOS BOSSES/NPCS aqui esta lo guapo :)                ---------------- */
 /* --------------------------------------------------------------------------------------------------------------------- */
 
 // Esto en gran parte esta bien, es mas que nada scriptar el comportamiento
@@ -1329,8 +1329,8 @@ class npc_korkron_axethrower_rifleman : public CreatureScript
                 me->RemoveAurasDueToSpell(SPELL_ELITE);
                 me->RemoveAurasDueToSpell(SPELL_VETERAN);
                 events.ScheduleEvent(EVENT_EXPERIENCED, urand(19000, 21000)); // ~20 sec
-                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000)); // ~40 sec
-                events.ScheduleEvent(EVENT_ELITE, urand(59000, 61000)); // ~60 sec
+                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000));     // ~40 sec
+                events.ScheduleEvent(EVENT_ELITE, urand(59000, 61000));       // ~60 sec
                 attacktimer = urand(6000, 15000);
                 if (me->GetEntry() == NPC_GB_SKYBREAKER_RIFLEMAN)
                     SetEquipmentSlots(false, EQUIP_NO_CHANGE, EQUIP_NO_CHANGE, 47267);
@@ -1444,11 +1444,11 @@ class npc_sergeant : public CreatureScript
                 me->RemoveAurasDueToSpell(SPELL_EXPERIENCED);
                 me->RemoveAurasDueToSpell(SPELL_ELITE);
                 DesperateResolve = RAID_MODE( SPELL_DESPERATE_RESOLVE_10_NM, SPELL_DESPERATE_RESOLVE_25_NM, SPELL_DESPERATE_RESOLVE_10_HM, SPELL_DESPERATE_RESOLVE_25_HM);
-                events.ScheduleEvent(EVENT_EXPERIENCED, urand(19000, 21000)); // ~20 sec
-                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000)); // ~40 sec
+                events.ScheduleEvent(EVENT_EXPERIENCED, urand(19000, 21000));  // ~20 sec
+                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000));      // ~40 sec
                 events.ScheduleEvent(EVENT_BURNING_PITCH, urand(60000, 62000));// ~61 sec
                 if(me->GetMap()->ToInstanceMap()->GetMaxPlayers() == 25 && me->GetMap()->IsHeroic())
-                    events.ScheduleEvent(EVENT_ELITE, urand(59000, 61000)); // ~60 sec
+                    events.ScheduleEvent(EVENT_ELITE, urand(59000, 61000));       // ~60 sec
             }
 
             void DamageTaken(Unit* /*attacker*/, uint32& /*damage*/)
@@ -1577,8 +1577,8 @@ class npc_marine_or_reaver : public CreatureScript
                 me->RemoveAurasDueToSpell(SPELL_EXPERIENCED);
                 me->RemoveAurasDueToSpell(SPELL_ELITE);
                 DesperateResolve = RAID_MODE( SPELL_DESPERATE_RESOLVE_10_NM, SPELL_DESPERATE_RESOLVE_25_NM, SPELL_DESPERATE_RESOLVE_10_HM, SPELL_DESPERATE_RESOLVE_25_HM);
-                events.ScheduleEvent(EVENT_EXPERIENCED, urand(19000, 21000)); // ~20 sec
-                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000)); // ~40 sec
+                events.ScheduleEvent(EVENT_EXPERIENCED, urand(19000, 21000));  // ~20 sec
+                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000));      // ~40 sec
                 events.ScheduleEvent(EVENT_BURNING_PITCH, urand(60000, 62000));// ~61 sec
             }
 
@@ -1856,9 +1856,9 @@ class npc_mortar_soldier_or_rocketeer : public CreatureScript
                 me->RemoveAurasDueToSpell(SPELL_ELITE);
                 me->RemoveAurasDueToSpell(SPELL_VETERAN);
                 events.ScheduleEvent(EVENT_EXPERIENCED, urand(19000, 21000)); // ~20 sec
-                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000)); // ~40 sec
-                events.ScheduleEvent(EVENT_ELITE, urand(59000, 61000)); // ~60 sec
-                events.ScheduleEvent(EVENT_ROCKET_ART, urand(10000, 15000)); // ~12 sec
+                events.ScheduleEvent(EVENT_VETERAN, urand(39000, 41000));     // ~40 sec
+                events.ScheduleEvent(EVENT_ELITE, urand(59000, 61000));       // ~60 sec
+                events.ScheduleEvent(EVENT_ROCKET_ART, urand(10000, 15000));   // ~12 sec
             }
 
             void JustDied(Unit* killer)
@@ -1914,7 +1914,7 @@ class npc_mortar_soldier_or_rocketeer : public CreatureScript
                                     me->CastSpell(target, 70173, true);
                                 }
                             }
-                            events.ScheduleEvent(EVENT_ROCKET_ART, urand(10000, 15000)); // ~12 sec
+                            events.ScheduleEvent(EVENT_ROCKET_ART, urand(10000, 15000));   // ~12 sec
                             break;
                         default:
                             break;
@@ -2486,11 +2486,11 @@ class npc_gunship_trigger : public CreatureScript
 };
 
 /* --------------------------------------------------------------------------------------------------------------------- */
-/* --------------------------------------- TRASH!!! LO GUAPO ----------------------------------------------- */
+/* ---------------------------------------      TRASH!!! LO GUAPO        ----------------------------------------------- */
 /* --------------------------------------------------------------------------------------------------------------------- */
 
 // La muralla de las calaveras <-------------- Trashmob desde aqui (A REVISAR *****OJO****)
-/* Kor'kron Primalist 37030*/
+/* Kor'kron Primalist  37030*/
 class npc_korkron_primalist: public CreatureScript
 {
     public:
@@ -2608,7 +2608,7 @@ class npc_korkron_primalist: public CreatureScript
         }
 };
 
-/* Kor'kron Defender 37032*/
+/* Kor'kron Defender  37032*/
 class npc_korkron_defender: public CreatureScript
 {
     public:
@@ -2721,7 +2721,7 @@ class npc_korkron_defender: public CreatureScript
         }
 };
 
-/* Skybreaker Vindicator 37003*/
+/* Skybreaker Vindicator  37003*/
 class npc_skybreaker_vindicator: public CreatureScript
 {
     public:
@@ -2827,7 +2827,7 @@ class npc_skybreaker_vindicator: public CreatureScript
         }
 };
 
-/* Skybreaker Protector 36998*/
+/* Skybreaker Protector  36998*/
 class npc_skybreaker_protector: public CreatureScript
 {
     public:
@@ -2944,7 +2944,7 @@ class npc_skybreaker_protector: public CreatureScript
 };
 
 
-/* Spire Frostwyrm 37230*/
+/* Spire Frostwyrm  37230*/
 class npc_icc_spire_frostwyrm: public CreatureScript
 {
     public:
@@ -3042,7 +3042,7 @@ class npc_icc_spire_frostwyrm: public CreatureScript
         }
 };
 /* --------------------------------------------------------------------------------------------------------------------- */
-/* ---------------------------------------------- PARA LOS FROSTWYRMS ------------------------------------------------------ */
+/* ----------------------------------------------      PARA LOS FROSTWYRMS        ------------------------------------------------------ */
 /* --------------------------------------------------------------------------------------------------------------------- */
 
 // ***** OJO ***** aqui con los areatriggers para que bajen los frostwyrms
@@ -3073,7 +3073,7 @@ class at_icc_land_frostwyrm : public AreaTriggerScript
 };
 
 /* --------------------------------------------------------------------------------------------------------------------- */
-/* ------------------------------------------ PARA LA NAVE ------------------------------------------------- */
+/* ------------------------------------------      PARA LA NAVE        ------------------------------------------------- */
 /* --------------------------------------------------------------------------------------------------------------------- */
 
 // ******* OJO ******** aqui esta lo chungo <----- sobre el transporte que se mueve y tal
@@ -3116,7 +3116,7 @@ class transport_gunship : public TransportScript
 };
 
 /* --------------------------------------------------------------------------------------------------------------------- */
-/* ------------------------------------------ SCRIPT SPELLS ------------------------------------------------ */
+/* ------------------------------------------      SCRIPT SPELLS        ------------------------------------------------ */
 /* --------------------------------------------------------------------------------------------------------------------- */
 /* Remove Rocket Pack - 70713 */
 class spell_icc_remove_rocket_pack : public SpellScriptLoader
