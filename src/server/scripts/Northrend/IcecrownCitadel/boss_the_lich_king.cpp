@@ -893,7 +893,7 @@ class boss_the_lich_king : public CreatureScript
                             DoCast(me, SPELL_EMOTE_SHOUT_NO_SHEATH, false);
                             break;
                         case EVENT_INTRO_EMOTE_1:
-                            me->HandleEmoteCommand(EMOTE_ONESHOT_POINT_NOSHEATHE);
+                            me->HandleEmoteCommand(EMOTE_ONESHOT_POINT_NO_SHEATHE);
                             break;
                         case EVENT_INTRO_CAST_FREEZE:
                             Talk(SAY_LK_INTRO_3);
@@ -1268,7 +1268,7 @@ class npc_tirion_fordring_tft : public CreatureScript
                             _events.ScheduleEvent(EVENT_INTRO_CHARGE, 5000, 0, PHASE_INTRO);
                             break;
                         case EVENT_INTRO_EMOTE_1:
-                            me->HandleEmoteCommand(EMOTE_ONESHOT_POINT_NOSHEATHE);
+                            me->HandleEmoteCommand(EMOTE_ONESHOT_POINT_NO_SHEATHE);
                             break;
                         case EVENT_INTRO_CHARGE:
                             me->RemoveUnitMovementFlag(MOVEMENTFLAG_WALKING);
