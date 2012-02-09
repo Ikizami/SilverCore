@@ -14,3 +14,5 @@ build*/
 *.BACKUP.*
 *.BASE.*
 *.LOCAL.*
+kombine.bat
+All_Characters_Updates.sql
