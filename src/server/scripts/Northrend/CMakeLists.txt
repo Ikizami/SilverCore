@@ -51,11 +51,12 @@ set(scripts_STAT_SRCS
   Northrend/ChamberOfAspects/RubySanctum/boss_saviana_ragefire.cpp
   Northrend/ChamberOfAspects/RubySanctum/boss_general_zarithrian.cpp
   Northrend/ChamberOfAspects/RubySanctum/boss_halion.cpp
-    Northrend/FrozenHalls/HallsOfReflection/halls_of_reflection.h
+  Northrend/FrozenHalls/HallsOfReflection/halls_of_reflection.h
   Northrend/FrozenHalls/HallsOfReflection/boss_falric.cpp
   Northrend/FrozenHalls/HallsOfReflection/instance_halls_of_reflection.cpp
   Northrend/FrozenHalls/HallsOfReflection/halls_of_reflection.cpp
   Northrend/FrozenHalls/HallsOfReflection/boss_marwyn.cpp
+  Northrend/FrozenHalls/HallsOfReflection/boss_the_lich_king_hor.cpp
   Northrend/FrozenHalls/PitOfSaron/boss_forgemaster_garfrost.cpp
   Northrend/FrozenHalls/PitOfSaron/boss_krickandick.cpp
   Northrend/FrozenHalls/PitOfSaron/pit_of_saron.cpp
