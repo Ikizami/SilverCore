@@ -190,7 +190,7 @@ class instance_icecrown_citadel : public InstanceMapScript
                 PrepareGunshipEvent(player); // <-- ojala halle una manera para esto
 				
 				if (instance->IsHeroic())
-+                     Events.ScheduleEvent(EVENT_CHECK_HERO_ACHIEVEMENT, 10000);
+                    Events.ScheduleEvent(EVENT_CHECK_HERO_ACHIEVEMENT, 10000);
             }
 
             void OnCreatureCreate(Creature* creature)
