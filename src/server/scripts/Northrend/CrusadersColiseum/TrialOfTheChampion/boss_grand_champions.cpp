@@ -181,7 +181,7 @@ struct npc_mounted_championAI : ScriptedAI
         // Set Defend to 3 charges at start
         for (uint8 i = 0; i < 3; ++i)
             DoCast(me, SPELL_SHIELD, true);
-
+                    if (instance && (uiWaypointPath == 3 || uiWaypointPath == 2))
         if (instance->GetData(MINION_ENCOUNTER) != IN_PROGRESS)
             instance->SetData(MINION_ENCOUNTER, IN_PROGRESS);
     }

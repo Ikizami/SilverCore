@@ -127,7 +127,7 @@ public:
             else
             {
                 me->SetFlying(false);
-            }
+                        me->SetLevitate(false);
         }
 
         void StartMovement(uint32 id)
@@ -154,6 +154,7 @@ public:
         {
             if (pInstance)
                 pInstance->SetData(TYPE_RAGEFIRE, FAIL);
+                me->SetLevitate(false);
         }
 
         void EnterCombat(Unit *who)
@@ -181,7 +182,7 @@ public:
                  for (std::list<Unit*>::const_iterator itr = playerList.begin(); itr != playerList.end(); ++itr)
                  {
                      Unit *pTemp = (*itr);
-                     me->CastSpell(pTemp, SPELL_BEACON, true);
+                            me->SetLevitate(true);
                  }
 
                  conflagated = true;
