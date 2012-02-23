@@ -1,20 +1,20 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
- * Copyright (C) 2006-2009 ScriptDev2 <https://scriptdev2.svn.sourceforge.net/>
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 2 of the License, or (at your
- * option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+* Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
+* Copyright (C) 2006-2009 ScriptDev2 <https://scriptdev2.svn.sourceforge.net/>
+*
+* This program is free software; you can redistribute it and/or modify it
+* under the terms of the GNU General Public License as published by the
+* Free Software Foundation; either version 2 of the License, or (at your
+* option) any later version.
+*
+* This program is distributed in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+* more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 /* ScriptData
 SDName: boss_grand_champions
@@ -30,60 +30,60 @@ EndScriptData */
 enum eSpells
 {
     //Vehicle
-    SPELL_CHARGE                    = 68282,
-    SPELL_SHIELD_BREAKER            = 62575,
-    SPELL_SHIELD_BREAKER_VISUAL     = 45815,
-    SPELL_SHIELD                    = 66482,
-    SPELL_THRUST                    = 62544,
-    SPELL_KNEE                      = 68442,
+    SPELL_CHARGE = 68282,
+    SPELL_SHIELD_BREAKER = 62575,
+    SPELL_SHIELD_BREAKER_VISUAL = 45815,
+    SPELL_SHIELD = 66482,
+    SPELL_THRUST = 62544,
+    SPELL_KNEE = 68442,
     // 67870
 
     // Marshal Jacob Alerius && Mokra the Skullcrusher || Warrior
-    SPELL_MORTAL_STRIKE             = 68783,
-    SPELL_MORTAL_STRIKE_H           = 68784,
-    SPELL_BLADESTORM                = 63784,
-    SPELL_INTERCEPT                 = 67540,
-    SPELL_ROLLING_THROW             = 47115, //not implemented in the AI yet...
+    SPELL_MORTAL_STRIKE = 68783,
+    SPELL_MORTAL_STRIKE_H = 68784,
+    SPELL_BLADESTORM = 63784,
+    SPELL_INTERCEPT = 67540,
+    SPELL_ROLLING_THROW = 47115, //not implemented in the AI yet...
 
     // Ambrose Boltspark && Eressea Dawnsinger || Mage
-    SPELL_FIREBALL                  = 66042,
-    SPELL_FIREBALL_H                = 68310,
-    SPELL_BLAST_WAVE                = 66044,
-    SPELL_BLAST_WAVE_H              = 68312,
-    SPELL_HASTE                     = 66045,
-    SPELL_POLYMORPH                 = 66043,
-    SPELL_POLYMORPH_H               = 68311,
+    SPELL_FIREBALL = 66042,
+    SPELL_FIREBALL_H = 68310,
+    SPELL_BLAST_WAVE = 66044,
+    SPELL_BLAST_WAVE_H = 68312,
+    SPELL_HASTE = 66045,
+    SPELL_POLYMORPH = 66043,
+    SPELL_POLYMORPH_H = 68311,
 
     // Colosos && Runok Wildmane || Shaman
-    SPELL_CHAIN_LIGHTNING           = 67529,
-    SPELL_CHAIN_LIGHTNING_H         = 68319,
-    SPELL_EARTH_SHIELD              = 67530,
-    SPELL_HEALING_WAVE              = 67528,
-    SPELL_HEALING_WAVE_H            = 68318,
-    SPELL_HEX_OF_MENDING            = 67534,
-    SPELL_HEX_OF_MENDING_HEAL       = 67535,
+    SPELL_CHAIN_LIGHTNING = 67529,
+    SPELL_CHAIN_LIGHTNING_H = 68319,
+    SPELL_EARTH_SHIELD = 67530,
+    SPELL_HEALING_WAVE = 67528,
+    SPELL_HEALING_WAVE_H = 68318,
+    SPELL_HEX_OF_MENDING = 67534,
+    SPELL_HEX_OF_MENDING_HEAL = 67535,
 
     // Jaelyne Evensong && Zul'tore || Hunter
-    SPELL_DISENGAGE                 = 68339,
-    SPELL_LIGHTNING_ARROWS          = 66085,
-    SPELL_LIGHTNING_ARROWS_DAMAGE   = 66095,
-    SPELL_LIGHTNING_ARROWS_VISUAL   = 66083,
-    SPELL_MULTI_SHOT                = 66081,
-    SPELL_SHOOT                     = 65868,
-    SPELL_SHOOT_H                   = 67988,
+    SPELL_DISENGAGE = 68339,
+    SPELL_LIGHTNING_ARROWS = 66085,
+    SPELL_LIGHTNING_ARROWS_DAMAGE = 66095,
+    SPELL_LIGHTNING_ARROWS_VISUAL = 66083,
+    SPELL_MULTI_SHOT = 66081,
+    SPELL_SHOOT = 65868,
+    SPELL_SHOOT_H = 67988,
 
     // Lana Stouthammer Evensong && Deathstalker Visceri || Rouge
-    SPELL_DEADLY_POISON             = 67711,
-    SPELL_EVISCERATE                = 67709,
-    SPELL_EVISCERATE_H              = 68317,
-    SPELL_FAN_OF_KNIVES             = 67706,
-    SPELL_POISON_BOTTLE             = 67701,
-    SPELL_DUAL_WIELD                = 42459,
+    SPELL_DEADLY_POISON = 67711,
+    SPELL_EVISCERATE = 67709,
+    SPELL_EVISCERATE_H = 68317,
+    SPELL_FAN_OF_KNIVES = 67706,
+    SPELL_POISON_BOTTLE = 67701,
+    SPELL_DUAL_WIELD = 42459,
 };
 
 /*
-* Generic AI for vehicles used by npcs in ToC, it needs more improvements.  *
-* Script Complete: 25%.                                                     *
+* Generic AI for vehicles used by npcs in ToC, it needs more improvements. *
+* Script Complete: 25%. *
 */
 
 struct npc_mounted_championAI : ScriptedAI
@@ -119,27 +119,27 @@ struct npc_mounted_championAI : ScriptedAI
         switch(me->GetEntry())
         {
             // Alliance
-            case NPC_STORMWIND_CHAMPION:  return 28912;
-            case NPC_IRONFORGE_CHAMPION:  return 29258;
+            case NPC_STORMWIND_CHAMPION: return 28912;
+            case NPC_IRONFORGE_CHAMPION: return 29258;
             case NPC_GNOMEREGAN_CHAMPION: return 28571;
-            case NPC_DARNASSUS_CHAMPION:  return 29256;
-            case NPC_EXODAR_CHAMPION:     return 29255;
-            case NPC_JACOB:               return 29284;
-            case NPC_AMBROSE:             return 28571;
-            case NPC_COLOSOS:             return 29255;
-            case NPC_JAELYNE:             return 9991;
-            case NPC_LANA:                return 2787;
+            case NPC_DARNASSUS_CHAMPION: return 29256;
+            case NPC_EXODAR_CHAMPION: return 29255;
+            case NPC_JACOB: return 29284;
+            case NPC_AMBROSE: return 28571;
+            case NPC_COLOSOS: return 29255;
+            case NPC_JAELYNE: return 9991;
+            case NPC_LANA: return 2787;
             // Horde
-            case NPC_ORGRIMMAR_CHAMPION:     return 29260;
+            case NPC_ORGRIMMAR_CHAMPION: return 29260;
             case NPC_THUNDER_BLUFF_CHAMPION: return 29259;
-            case NPC_UNDERCITY_CHAMPION:     return 29257;
-            case NPC_SENJIN_CHAMPION:        return 29261;
-            case NPC_SILVERMOON_CHAMPION:    return 29262;
-            case NPC_MOKRA:                  return 29879;
-            case NPC_ERESSEA:                return 28607;
-            case NPC_RUNOK:                  return 29880;
-            case NPC_ZULTORE:                return 29261;
-            case NPC_VISCERI:                return 10718;
+            case NPC_UNDERCITY_CHAMPION: return 29257;
+            case NPC_SENJIN_CHAMPION: return 29261;
+            case NPC_SILVERMOON_CHAMPION: return 29262;
+            case NPC_MOKRA: return 29879;
+            case NPC_ERESSEA: return 28607;
+            case NPC_RUNOK: return 29880;
+            case NPC_ZULTORE: return 29261;
+            case NPC_VISCERI: return 10718;
         }
         return 0;
     }
@@ -181,7 +181,7 @@ struct npc_mounted_championAI : ScriptedAI
         // Set Defend to 3 charges at start
         for (uint8 i = 0; i < 3; ++i)
             DoCast(me, SPELL_SHIELD, true);
-                    if (instance && (uiWaypointPath == 3 || uiWaypointPath == 2))
+
         if (instance->GetData(MINION_ENCOUNTER) != IN_PROGRESS)
             instance->SetData(MINION_ENCOUNTER, IN_PROGRESS);
     }
@@ -194,9 +194,9 @@ struct npc_mounted_championAI : ScriptedAI
 
     bool isGrandChampion()
     {
-        return (me->GetEntry() == NPC_MOKRA   || me->GetEntry() == NPC_JACOB   ||
+        return (me->GetEntry() == NPC_MOKRA || me->GetEntry() == NPC_JACOB ||
                 me->GetEntry() == NPC_ERESSEA || me->GetEntry() == NPC_AMBROSE ||
-                me->GetEntry() == NPC_RUNOK   || me->GetEntry() == NPC_COLOSOS ||
+                me->GetEntry() == NPC_RUNOK || me->GetEntry() == NPC_COLOSOS ||
                 me->GetEntry() == NPC_ZULTORE || me->GetEntry() == NPC_JAELYNE ||
                 me->GetEntry() == NPC_VISCERI || me->GetEntry() == NPC_LANA);
     }
@@ -300,7 +300,7 @@ public:
 
             defeated = false;
             bladeStormTimer = urand(15000, 20000);
-            interceptTimer  = 7000;
+            interceptTimer = 7000;
             mortalStrikeTimer = urand(8000, 12000);
             me->RemoveUnitMovementFlag(MOVEMENTFLAG_WALKING);
             me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
@@ -460,7 +460,7 @@ public:
 
             defeated = false;
             fireBallTimer = 2000;
-            polymorphTimer  = 8000;
+            polymorphTimer = 8000;
             blastWaveTimer = 12000;
             hasteTimer = 22000;
             me->RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
@@ -990,7 +990,7 @@ public:
 
             defeated = false;
             eviscerateTimer = 8000;
-            fanKivesTimer   = 14000;
+            fanKivesTimer = 14000;
             posionBottleTimer = 19000;
 
             // Settings for offhand attack
@@ -1121,13 +1121,13 @@ public:
 enum vehicleSpells
 {
     // Defend
-    SPELL_DEFEND          = 66482,
+    SPELL_DEFEND = 66482,
     SPELL_VISUAL_SHIELD_1 = 63130,
     SPELL_VISUAL_SHIELD_2 = 63131,
     SPELL_VISUAL_SHIELD_3 = 63132,
 
     // Shield break
-    SPELL_THROW_VISUAL    = 45827,
+    SPELL_THROW_VISUAL = 45827,
 };
 
 class spell_toc5_ride_mount : public SpellScriptLoader

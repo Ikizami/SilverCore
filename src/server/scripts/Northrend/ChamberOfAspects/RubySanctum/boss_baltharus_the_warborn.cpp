@@ -1,23 +1,23 @@
 /*
- * Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the
- * Free Software Foundation; either version 2 of the License, or (at your
- * option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+* Copyright (C) 2008-2012 TrinityCore <http://www.trinitycore.org/>
+*
+* This program is free software; you can redistribute it and/or modify it
+* under the terms of the GNU General Public License as published by the
+* Free Software Foundation; either version 2 of the License, or (at your
+* option) any later version.
+*
+* This program is distributed in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+* FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+* more details.
+*
+* You should have received a copy of the GNU General Public License along
+* with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 /*
- * WowRean Script www.wowrean.com
- */
+* WowRean Script www.wowrean.com
+*/
 
 #include "ScriptPCH.h"
 #include "ruby_sanctum.h"
@@ -29,26 +29,26 @@ struct Locations
 
 static Locations SpawnLoc[]=
 {
-    {3152.329834f, 359.41757f, 85.301605f},    // Baltharus target point
-    {3153.06f, 389.486f, 86.2596f},            // Baltharus initial point
+    {3152.329834f, 359.41757f, 85.301605f}, // Baltharus target point
+    {3153.06f, 389.486f, 86.2596f}, // Baltharus initial point
 };
 
 enum Equipment
 {
-    EQUIP_MAIN           = 28365, // corregi equipamiento WS
-    EQUIP_OFFHAND        = EQUIP_NO_CHANGE,
-    EQUIP_RANGED         = EQUIP_NO_CHANGE,
-    EQUIP_DONE           = EQUIP_NO_CHANGE,
+    EQUIP_MAIN = 28365, // corregi equipamiento WS
+    EQUIP_OFFHAND = EQUIP_NO_CHANGE,
+    EQUIP_RANGED = EQUIP_NO_CHANGE,
+    EQUIP_DONE = EQUIP_NO_CHANGE,
 };
 
 enum BossSpells
 {
-    SPELL_BLADE_TEMPEST              = 75125, // every 22 secs
-    SPELL_ENERVATING_BRAND           = 74502, // friendlys in 12yards = 74505
-    SPELL_REPELLING_WAVE             = 74509, // once if call clone
-    SPELL_SABER_LASH                 = 40504, // every 10-15 secs
-    SPELL_SUMMON_CLONE               = 74511, // summons npc 39899 (Clone)
-    SPELL_CHANNEL_SPELL              = 76221, // Channeling dummy spell
+    SPELL_BLADE_TEMPEST = 75125, // every 22 secs
+    SPELL_ENERVATING_BRAND = 74502, // friendlys in 12yards = 74505
+    SPELL_REPELLING_WAVE = 74509, // once if call clone
+    SPELL_SABER_LASH = 40504, // every 10-15 secs
+    SPELL_SUMMON_CLONE = 74511, // summons npc 39899 (Clone)
+    SPELL_CHANNEL_SPELL = 76221, // Channeling dummy spell
 };
 
 /*######
@@ -140,8 +140,8 @@ public:
         {
             if (!pInstance) return;
 
-          //  if (pDummyTarget && pDummyTarget->isSummon())
-          //      pDummyTarget->ForcedDespawn();
+          // if (pDummyTarget && pDummyTarget->isSummon())
+          // pDummyTarget->ForcedDespawn();
 
             DoScriptText(-1666303,me);
             pInstance->SetData(TYPE_BALTHARUS, DONE);
@@ -399,15 +399,15 @@ public:
 };
 
 /*######
-##  mob_xerestrasza
+## mob_xerestrasza
 ######*/
 
 static Locations SpawnLocXer[]=
 {
-    {3155.540039f, 342.391998f, 84.596802f},   // 0 - start point
-    {3152.329834f, 359.41757f, 85.301605f},    // 1 - second say
-    {3152.078369f, 383.939178f, 86.337875f},   // 2 - other says and staying
-    {3154.99f, 535.637f, 72.8887f},            // 3 - Halion spawn point
+    {3155.540039f, 342.391998f, 84.596802f}, // 0 - start point
+    {3152.329834f, 359.41757f, 85.301605f}, // 1 - second say
+    {3152.078369f, 383.939178f, 86.337875f}, // 2 - other says and staying
+    {3154.99f, 535.637f, 72.8887f}, // 3 - Halion spawn point
 };
 
 class mob_xerestrasza : public CreatureScript
